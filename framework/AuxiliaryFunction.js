@@ -149,9 +149,7 @@ function GetAverage(numbers, numOfdecimals=2){
  * @param {Number}
  */
 function GetSum(numbers){
-  return numbers.reduce((acc, number) => {
-              return acc+number
-          }, 0)
+  return numbers.reduce((acc, number) => acc+number, 0)
 }
 
 module.exports = {  Sleep, 
