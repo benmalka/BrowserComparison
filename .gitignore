@@ -1,0 +1,13 @@
+# exclude node modules
+/node_modules
+
+# exclude reports
+/reports/*
+
+# exclude debugging content
+/debugging/chrome/*
+/debugging/opera/*
+/debugging/firefox/*
+
+# exclude TestModules.js (only for testing)
+TestModules.js

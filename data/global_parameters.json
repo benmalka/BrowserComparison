@@ -1,0 +1,10 @@
+{
+	"chrome_dir": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+	"chrome_debug_dir": ".\\debugging\\chrome",
+	"opera_dir": "\"C:\\Program Files\\Opera\\launcher.exe\"",
+	"opera_debug_dir": ".\\debugging\\opera",
+	"report_dir": ".\\reports",
+	"browser1_port": "3000",
+	"browser2_port": "3001"
+	
+}

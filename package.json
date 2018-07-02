@@ -1,0 +1,22 @@
+{
+  "name": "web-browser-automation",
+  "version": "1.0.0",
+  "description": "Automationt testing",
+  "main": "test.js",
+  "repository" :
+        {"type" : "git",
+          "url" : "https://github.com/benmalka/BrowserComparison.git"
+        },
+  "scripts": {
+    "start": "node TestModules.js",
+    "test": "mocha"
+  },
+  "author": "Ben Malka",
+  "license": "ISC",
+  "dependencies": {
+    "chrome-remote-interface": "^0.25.6",
+    "dateformat": "^3.0.3",
+    "fluentreports": "^1.1.8",
+    "mocha": "^5.2.0"
+  }
+}
