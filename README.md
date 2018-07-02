@@ -29,5 +29,5 @@ $ npm test
 
 ## After Test
 
-When the test is passed, it generates a report found in <your_git_directory>/reports/ 
+When the test passes, it generates a report found in <your_git_directory>/reports/ 
 You'll find there all the reports
