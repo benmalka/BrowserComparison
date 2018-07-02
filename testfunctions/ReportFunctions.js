@@ -2,7 +2,8 @@ const { ReduceNetworkData,
         GetIntersection,
         GetUnion,
         CreateNetwrokTypeArrayForComparisonReport,
-        GetComparisonObject } = require('../framework/AuxiliaryFunction');
+        GetComparisonObject,
+        GetAverage } = require('../framework/AuxiliaryFunction');
 const ReportObject = require('../framework/ReportObject')
 /**
  * 
@@ -26,16 +27,24 @@ function CreateNetworkComparison(browsersNames, firstBrowserData, secondBrowserD
     const groupIntersection = GetIntersection(ReduceNetworkData(firstBrowserData.requests), ReduceNetworkData(secondBrowserData.requests));
     const firstGroupDissimilarNum = Object.keys(firstBrowserData.requests).length - groupIntersection.length
     const secondGroupDissimilarNum = Object.keys(secondBrowserData.requests).length - groupIntersection.length
+    const firstObjectAvgTime = Object.values(firstBrowserData.requests).map((requestArray) => {
+        if (requestArray.length > 1) return requestArray[1].timestamp-requestArray[0].timestamp
+    });
+    const secondObjectAvgTime = Object.values(secondBrowserData.requests).map((requestArray) => {
+        if (requestArray.length > 1) return requestArray[1].timestamp-requestArray[0].timestamp
+    });
     const typeObject = CreateNetwrokTypeArrayForComparisonReport(comparison_type, 'Media type', firstBrowserData.type, secondBrowserData.type)
     const websitesUnited = GetUnion(Object.keys(firstBrowserData.urls), Object.keys(secondBrowserData.urls))
-    
     const websiteList = websitesUnited.map((website) => {
                 return {...GetComparisonObject(comparison_type, 'Websites', website, false), 
                         browser1: firstBrowserData.urls[website] || '0', 
                         browser2: secondBrowserData.urls[website] || '0'}});
-    const generalList = [{...GetComparisonObject(comparison_type, 'General', 'Time to load', false),
+    const generalList = [{...GetComparisonObject(comparison_type, 'General', 'Total time to load', false),
                         browser1: `${(firstBrowserData.time.last - firstBrowserData.time.first).toFixed(1)}s`, 
                         browser2: `${(secondBrowserData.time.last - secondBrowserData.time.first).toFixed(1)}s`},
+                        {...GetComparisonObject(comparison_type, 'General', 'Average time per request', false),
+                        browser1: `${GetAverage(firstObjectAvgTime.filter((value) => value))}s`, 
+                        browser2: `${GetAverage(secondObjectAvgTime.filter((value) => value))}s`},
                         {...GetComparisonObject(comparison_type, 'General', 'Total number of requests', false),
                         browser1: Object.keys(firstBrowserData.requests).length, 
                         browser2: Object.keys(secondBrowserData.requests).length},
@@ -45,9 +54,11 @@ function CreateNetworkComparison(browsersNames, firstBrowserData, secondBrowserD
                         {...GetComparisonObject(comparison_type, 'General', 'Total number of unresolved requests', false),
                         browser1: typeObject.total_unres_b1, 
                         browser2: typeObject.total_unres_b2}]
+    
     finalResutls.push(...generalList);
     finalResutls.push(...typeObject.data);
     finalResutls.push(...websiteList);
+    
     CreateComparisonReport(browsersNames, finalResutls);
 };
 /**

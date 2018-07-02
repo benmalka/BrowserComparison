@@ -5,7 +5,7 @@ const { GetWebDriverObject,
         CloserBrowser,
         ControllTracking, 
         NavigateToUrl,
-        UpdateNetworkData} = require('../testfunctions/WebDriverFunctions');
+        UpdateNetworkData } = require('../testfunctions/WebDriverFunctions');
 const { CreateRequestNetworkData,
         CreateResponseNetworkData } = require('../testfunctions/GeneralFunctions');
 const { CreateNetworkComparison } = require('../testfunctions/ReportFunctions')

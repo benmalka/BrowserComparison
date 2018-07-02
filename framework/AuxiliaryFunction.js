@@ -132,6 +132,27 @@ function CreateNetwrokTypeArrayForComparisonReport(compTypeKey, groupeKey, first
             return acc.concat(statusArray);
   }, []), total_unres_b1: total_unres_b_1, total_unres_b2: total_unres_b_2}
 }
+/**
+ * Function calculates the average of all the numbers in the array
+ * 
+ * @param {Number[]} numbers
+ * @param {Number=} numOfdecimals amount of number after the decimal point, default 2
+ * @returns {Number} 
+ */
+function GetAverage(numbers, numOfdecimals=2){
+    return (GetSum(numbers)/numbers.length).toFixed(numOfdecimals);
+}
+/**
+ * Function calculates the sum of all the numbers in the array
+ * 
+ * @param {Number[]} numbers
+ * @param {Number}
+ */
+function GetSum(numbers){
+  return numbers.reduce((acc, number) => {
+              return acc+number
+          }, 0)
+}
 
 module.exports = {  Sleep, 
                     GetTimeStampString,
@@ -140,4 +161,5 @@ module.exports = {  Sleep,
                     CreateNetwrokTypeArrayForComparisonReport,
                     GetWebsiteNameFromUrl,
                     GetUnion,
-                    GetComparisonObject };
+                    GetComparisonObject,
+                    GetAverage};

@@ -23,9 +23,11 @@ at <your_git_directory>/data/global_parameters.json
 
 Open a shell in your git directory
 ```sh
-  npm test
+$ npm install
+$ npm test
 ```
 
 ## After Test
 
-at <your_git_directory>/reports/ you'll see the last report
+When the test is passed, it generates a report found in <your_git_directory>/reports/ 
+You'll find there all the reports
