@@ -3,11 +3,15 @@
 
 # exclude reports
 /reports/*
+!/reports/.keep
 
 # exclude debugging content
 /debugging/chrome/*
+!debugging/chrome/.keep
 /debugging/opera/*
+!debugging/opera/.keep
 /debugging/firefox/*
+!debugging/firefox/.keep
 
 # exclude TestModules.js (only for testing)
 TestModules.js
