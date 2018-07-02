@@ -15,7 +15,7 @@ const { browser1_port, browser2_port} = require('../data/global_parameters.json'
 describe('Browser Comparison', function() {
     describe('DOM Comparison between Opera and Chrome', function() {
         let opera, chrome;
-        this.timeout(10000);
+        this.timeout(15000);
         before(async () => {
             try{
                 [opera, chrome] = await Promise.all([GetWebDriverObject('opera', browser2_port), GetWebDriverObject('chrome', browser1_port)])

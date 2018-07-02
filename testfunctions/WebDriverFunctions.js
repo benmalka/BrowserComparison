@@ -10,7 +10,7 @@ const { Sleep } = require('../framework/AuxiliaryFunction');
 async function GetWebDriverObject(browserType, portNumebr) {
     var Browser = new BrowserObject(browserType, portNumebr);
     await Browser.RunBrowser();
-    Sleep(1000);
+    Sleep(5000);
     await Browser.CreateWebDriver();
     return Browser;
 };
